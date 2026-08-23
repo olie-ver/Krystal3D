@@ -1,0 +1,44 @@
+---
+import "../styles/globals.css"
+import Logo from "./Logo.astro"
+---
+
+<div>
+    <Logo/>
+    <nav>
+        <a href="/projects">Projects</a>
+        <a>Games</a>
+    </nav>
+</div>
+
+<style>
+div {
+    display: flex;
+    flex-wrap: none;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    margin-right: max(10svw, 10svh);
+
+    width: 80svw;
+    height: fit-content;
+}
+
+a {
+    cursor: pointer;
+    border-style: none;
+    background: transparent;
+    border-radius: 25px;
+    padding: 2svh 5svw 2svh 5svw;
+    border: 2px solid var(--background-color);
+
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--text-color);
+}
+</style>

@@ -1,0 +1,113 @@
+---
+import { Font } from "astro:assets"
+
+const { page } = Astro.props;
+---
+
+<header>
+    <Font cssVariable="--font-tilt-prism" />
+    <p>{page}</p>
+    <img id="themeToggle" class="display" src="src/images/Sun.svg"
+        alt="Theme toggle button"/>
+</header>
+
+<style>
+header {
+    position: relative;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: max(6svh, 4svw);
+    border-bottom: 3px solid var(--border-color);
+    margin-bottom: 1svh;
+    padding-top: 1svh;
+    padding-bottom: 0.5svh;
+
+    background-color: var(--background-color);
+}
+
+header p {
+    position: absolute;
+    top: -3rem;
+    left: 2%;
+    font-family: var(--font-tilt-prism);
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+}
+
+header img {
+    position: absolute;
+    right: 2%;
+    height: inherit; 
+    cursor: pointer;
+}
+</style>
+
+<script>
+const theme = (() => {
+    const localStorageTheme = localStorage?.getItem("theme") ?? "";
+    if (["light", "dark", "darker", "midnight"].includes(localStorageTheme)) {
+        return localStorageTheme;
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "darker";
+    }
+    return "light";
+})();
+
+console.log("theme: " + theme);
+
+document.documentElement.className = theme;
+
+switch (theme) {
+    case "light":
+        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Sun.svg");
+        break;
+    case "dark":
+        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Moon.svg");
+        break;
+    case "darker":
+        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Crescent.svg");
+        break;
+    case "midnight":
+        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Night.svg");
+        break;
+}
+
+const handleToggleClick = () => {
+    const element = document.documentElement;
+
+    const oldTheme = localStorage.getItem("theme")?.toLowerCase() ?? "light";
+    let src = "src/images/Sun.svg";
+    switch (oldTheme) {
+        case "light":
+            element.className = "dark";
+            localStorage.setItem("theme", "dark");
+            src = "src/images/Moon.svg";
+            break;
+        case "dark":
+            element.className = "darker";
+            localStorage.setItem("theme", "darker");
+            src = "src/images/Crescent.svg";
+            break;
+        case "darker":
+            element.className = "midnight";
+            localStorage.setItem("theme", "midnight");
+            src = "src/images/Night.svg";
+            break;
+        case "midnight":
+            element.className = "light";
+            localStorage.setItem("theme", "light");
+            src = "src/images/Sun.svg";
+            break;
+    }
+
+    document.getElementById("themeToggle")?.setAttribute("src", src);
+}
+
+document.getElementById("themeToggle")?.addEventListener("click", handleToggleClick);
+</script>

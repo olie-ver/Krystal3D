@@ -1,0 +1,36 @@
+html {
+    --background-color: magenta;
+    --border-color: #bb00bb;
+    --main-color: white;
+    --text-color: black;
+    
+    background: var(--background-color);
+}
+
+html.dark {
+    --background-color: #e300e3;
+    --border-color: #FFF8FF;
+    --main-color: #252525;
+    --text-color: white;
+
+    background: var(--background-color);
+
+}
+
+html.darker {
+    --background-color: #2a2a2a;
+    --border-color: black;
+    --main-color: #1d1d1d;
+    --text-color: white;
+
+    background: var(--background-color);
+}
+
+html.midnight {
+    --background-color: #0e0e0e;
+    --border-color: #131313;
+    --main-color: black;
+    --text-color: gray;
+
+    background: var(--background-color);
+}
