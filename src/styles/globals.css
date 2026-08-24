@@ -3,6 +3,7 @@ html {
     --border-color: #bb00bb;
     --main-color: white;
     --text-color: black;
+    --card-border-color: lightgray;
     
     background: var(--background-color);
 }
@@ -12,6 +13,7 @@ html.dark {
     --border-color: #FFF8FF;
     --main-color: #252525;
     --text-color: white;
+    --card-border-color: rgb(53, 53, 53);
 
     background: var(--background-color);
 
@@ -22,6 +24,7 @@ html.darker {
     --border-color: black;
     --main-color: #1d1d1d;
     --text-color: white;
+    --card-border-color: black;
 
     background: var(--background-color);
 }
@@ -31,6 +34,15 @@ html.midnight {
     --border-color: #131313;
     --main-color: black;
     --text-color: gray;
+    --card-border-color: var(--border-color);
 
     background: var(--background-color);
+}
+
+h1 {
+    color: var(--text-color);
+}
+
+p {
+    color: var(--text-color);
 }
