@@ -14,8 +14,8 @@ last-updated: 2026-08-21
 repo: "https://github.com/olie-ver/SATurn"
 
 img: 
-    src: "src/images/Krystal.svg"
-    alt: "Placeholder image for the Saturn logo"
+    src: "src/images/Saturn.svg"
+    alt: "A simple svg of Saturn"
 
 tags: ["C++", "SAT solving", "educational"]
 
