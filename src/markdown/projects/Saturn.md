@@ -1,15 +1,23 @@
 ---
 title: "Saturn"
 status: "Pre-release"
-version: "0.0.1"
-contributors: ["Oliver Lie"]
-open-source: "Yes"
+version: "N/A"
 
-start-date: 2026-03-30
-last-updated: 2026-07-24
+contributors: ["Oliver Lie"]
+
+open-source: "Not Yet"
+license: "None"
+
+start-date: 2026-05-31
+last-updated: 2026-08-21
+
+repo: "https://github.com/olie-ver/SATurn"
+
 img: 
-    src:
-    alt: "Test++ logo"
-tags: ["C++", "Test++", "unit testing"]
+    src: "src/images/Krystal.svg"
+    alt: "Placeholder image for the Saturn logo"
+
+tags: ["C++", "SAT solving", "educational"]
+
 description: "It's a thing"
 ---

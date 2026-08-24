@@ -1,6 +1,6 @@
 ---
 const { project } = Astro.props;
-console.log(project);
+// console.log(project);
 ---
 
 <div class="Card">
@@ -16,10 +16,8 @@ console.log(project);
                 " " + project.contributors.join(", ")
             }
         </p>
-        <p> 
-            Start Date: {project["start-date"].toString().substring(0, 10)}. 
-            <!-- Last Updated: {project["last-updated"].toString().substring(0, 10)} -->
-        </p>
+        <p>Start Date: {project["start-date"].toString().substring(0, 10)}</p>
+        <p>Last Updated: {project["last-updated"].toString().substring(0, 10)}</p>
     </div>
 </div>
 <style>
@@ -38,7 +36,12 @@ console.log(project);
 img {
     margin-top: 2.5%;
     margin-bottom: 2.5%;
+
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     align-self: center;
+
+    width: 40%;
     max-width: 50%;
 }
 
