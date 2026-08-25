@@ -1,0 +1,48 @@
+---
+import { Font } from "astro:assets"
+
+import "../styles/globals.css"
+
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import Navigation from "../components/Navigation.astro"
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, 
+				maximum-scale=2, viewport-fit=cover" />
+		<meta name="generator" content={Astro.generator} />
+        <Font cssVariable="--font-tilt-prism"/>
+		<title>Krystal</title>
+	</head>
+	<body>
+		<section>
+			<Header/>
+
+			<Navigation/>
+
+            <slot/>
+
+			<Footer/>
+		</section>
+	</body>
+
+	<style>
+		section {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+	
+			margin: 0;
+
+			width: 100svw;
+			height: 100svh;
+			overflow-y: scroll;
+			
+			background: var(--main-color);
+		}
+	</style>
+</html>

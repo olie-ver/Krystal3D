@@ -1,13 +1,15 @@
 ---
-import { Font } from "astro:assets"
+import Sun from "../images/Sun.svg";
+import Moon from "../images/Moon.svg";
+import Crescent from "../images/Crescent.svg";
+import Night from "../images/Night.svg";
 
 const { page } = Astro.props;
 ---
 
 <header>
-    <Font cssVariable="--font-tilt-prism" />
     <p>{page}</p>
-    <img id="themeToggle" class="display" src="src/images/Sun.svg"
+    <img id="themeToggle" class="display" src={Sun.src}
         alt="Theme toggle button"/>
 </header>
 
@@ -47,7 +49,7 @@ header img {
 }
 </style>
 
-<script>
+<script is:inline define:vars={{Sun, Moon, Crescent, Night}}>
 const theme = (() => {
     const localStorageTheme = localStorage?.getItem("theme") ?? "";
     if (["light", "dark", "darker", "midnight"].includes(localStorageTheme)) {
@@ -59,22 +61,20 @@ const theme = (() => {
     return "light";
 })();
 
-console.log("theme: " + theme);
-
 document.documentElement.className = theme;
 
 switch (theme) {
     case "light":
-        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Sun.svg");
+        document.getElementById("themeToggle")?.setAttribute("src", Sun.src);
         break;
     case "dark":
-        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Moon.svg");
+        document.getElementById("themeToggle")?.setAttribute("src", Moon.src);
         break;
     case "darker":
-        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Crescent.svg");
+        document.getElementById("themeToggle")?.setAttribute("src", Crescent.src);
         break;
     case "midnight":
-        document.getElementById("themeToggle")?.setAttribute("src", "src/images/Night.svg");
+        document.getElementById("themeToggle")?.setAttribute("src", Night.src);
         break;
 }
 
@@ -87,22 +87,22 @@ const handleToggleClick = () => {
         case "light":
             element.className = "dark";
             localStorage.setItem("theme", "dark");
-            src = "src/images/Moon.svg";
+            src = Moon.src;
             break;
         case "dark":
             element.className = "darker";
             localStorage.setItem("theme", "darker");
-            src = "src/images/Crescent.svg";
+            src = Crescent.src;
             break;
         case "darker":
             element.className = "midnight";
             localStorage.setItem("theme", "midnight");
-            src = "src/images/Night.svg";
+            src = Night.src;
             break;
         case "midnight":
             element.className = "light";
             localStorage.setItem("theme", "light");
-            src = "src/images/Sun.svg";
+            src = Sun.src;
             break;
     }
 

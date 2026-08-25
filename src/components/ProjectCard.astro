@@ -1,23 +1,23 @@
 ---
 const { project } = Astro.props;
-// console.log(project);
 ---
 
 <div class="Card">
-    <img src={project.img.src} alt={project.img.alt}/>
+    <img src={project.img.src.src} alt={project.img.alt}/>
+
     <div class="Info">
-        <a href=`projects/${project.title}`><h1>{project.title}</h1></a>
+        <a href={`/projects/${project.title}`}><h1>{project.title}</h1></a>
         <p>Status: {project.status}</p>
         <p>Version: {project.version}</p>
-        <p>Open Source: {project["open-source"]}</p>
+        <p>Open Source: {project.openSource}</p>
         <p>License: {project.license}</p>
         <p>Contributors: 
             {
                 " " + project.contributors.join(", ")
             }
         </p>
-        <p>Start Date: {project["start-date"].toString().substring(0, 10)}</p>
-        <p>Last Updated: {project["last-updated"].toString().substring(0, 10)}</p>
+        <p>Start Date: {project.startDate.toString().substring(0, 10)}</p>
+        <p>Last Updated: {project.lastUpdated.toString().substring(0, 10)}</p>
     </div>
 </div>
 <style>
@@ -34,6 +34,7 @@ const { project } = Astro.props;
 }
 
 img {
+    align-self: center;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
 
