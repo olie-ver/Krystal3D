@@ -1,12 +1,19 @@
-/* h1, h2, h3, p {
+h1, h2, h3, p {
     text-align: center;
     margin: 0% 5% 0% 5%;
-} */
+}
+
+h1, h2, h3 {
+    margin: 2.5% 5% 2.5% 5%;
+}
 
 ol {
-    margin-left: 10%;
+    margin-left: 2.5%;
     color: var(--text-color);
-    line-height: 10svh;
+}
+
+li {
+    font-weight: bold;
 }
 
 a {

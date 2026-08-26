@@ -19,20 +19,23 @@ img:
 
 tags: ["C#", "Godot", "video games"]
 
-description: "An upcoming desktop game with 52 card games bundled together."
+svg: false
 ---
 
 52Cards is an upcoming desktop game that comes with 52 card games bundled together.
 Although not yet completed, you can still try out some of our games we've made so 
 far on our site. Proudly developed in [Godot](https://godotengine.org), and models 
-made using [Blender](https://www.blender.org). Here are some of the games we have 
-ready:
+made using [Blender](https://www.blender.org). 
+
+&nbsp;
+
+Here are some of the games we have ready:
 1. Slapjack
 2. Egyptian Rat Screw
 3. Solitaire
 4. Speed
 
-## Credits:
+## Credits
 
 ### Game Developers:
 

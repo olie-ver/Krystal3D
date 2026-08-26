@@ -29,7 +29,7 @@ const { Content } = await render(p);
         <h1>{project}</h1>
 
         <section>
-            <img src={p.data.img.src.src} alt="Placeholder until I figure out how this all works"/>
+            <img id={p.data.svg ? "svg" : "img"} src={p.data.img.src.src} alt={p.data.img.alt}/>
             <div>
                 <p>Status: {p.data.status}</p>
                 <p id="middle">Version: {p.data.version}</p>
@@ -40,7 +40,6 @@ const { Content } = await render(p);
         <article>
             <Content/>
         </article>
-
     </main>
 </BaseLayout>
 <style>
@@ -63,6 +62,10 @@ const { Content } = await render(p);
         margin-top: 5%;
     }
 
+    article {
+        padding-bottom: 5%;
+    }
+
     section {
         display: flex;
         flex-direction: column;
@@ -73,6 +76,14 @@ const { Content } = await render(p);
     img {
         max-width: 40%;
         margin-bottom: 5%;
+    }
+
+    #svg {
+        filter: var(--logo-filter);
+    }
+
+    #img {
+        filter: var(--image-brightness);
     }
 
     div {

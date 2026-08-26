@@ -3,7 +3,7 @@ const { project } = Astro.props;
 ---
 
 <div class="Card">
-    <img src={project.img.src.src} alt={project.img.alt}/>
+    <img id={project.svg ? "svg" : "img"} src={project.img.src.src} alt={project.img.alt}/>
 
     <div class="Info">
         <a href={`/projects/${project.title}`}><h1>{project.title}</h1></a>
@@ -45,6 +45,15 @@ img {
     width: 40%;
     max-width: 50%;
 }
+
+#svg {
+    filter: var(--logo-filter);
+}
+
+#img {
+    filter: var(--image-brightness);
+}
+
 a {
     text-decoration: none;
     cursor: pointer;

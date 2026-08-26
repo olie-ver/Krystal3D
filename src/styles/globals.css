@@ -1,9 +1,17 @@
+/* https://angel-rs.github.io/css-color-filter-generator/ to get svgs into any different color */
+
 html {
     --background-color: magenta;
     --border-color: #bb00bb;
     --main-color: white;
     --text-color: black;
     --card-border-color: lightgray;
+
+    --logo-filter: brightness(0) saturate(100%) invert(16%) 
+                    sepia(91%) saturate(3836%) hue-rotate(299deg) 
+                    brightness(127%) contrast(125%);
+
+    --image-brightness: brightness(1);
     
     background: var(--background-color);
 }
@@ -14,6 +22,12 @@ html.dark {
     --main-color: #252525;
     --text-color: white;
     --card-border-color: rgb(53, 53, 53);
+
+    --logo-filter: brightness(0) saturate(100%) invert(16%) 
+                sepia(91%) saturate(3836%) hue-rotate(299deg) 
+                brightness(127%) contrast(125%);
+    
+    --image-brightness: brightness(0.8);
 
     background: var(--background-color);
 
@@ -26,6 +40,12 @@ html.darker {
     --text-color: white;
     --card-border-color: black;
 
+    --logo-filter: brightness(0) saturate(100%) invert(94%) 
+                    sepia(0%) saturate(7489%) hue-rotate(235deg)
+                    brightness(113%) contrast(98%);
+
+    --image-brightness: brightness(0.5);
+
     background: var(--background-color);
 }
 
@@ -35,6 +55,12 @@ html.midnight {
     --main-color: black;
     --text-color: gray;
     --card-border-color: var(--border-color);
+
+    --logo-filter: brightness(0) saturate(100%) invert(2%) 
+                    sepia(26%) saturate(0%) hue-rotate(152deg) 
+                    brightness(90%) contrast(84%);
+
+    --image-brightness: brightness(0.25);
 
     background: var(--background-color);
 }

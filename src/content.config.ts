@@ -19,7 +19,7 @@ const projects = defineCollection({
             alt: z.string()
         }),
         tags: z.array(z.string()),
-        description: z.string()
+        svg: z.boolean()
     })
 });
 
