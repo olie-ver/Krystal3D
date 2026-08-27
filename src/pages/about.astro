@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout>
+    <main>
+        <h1>About Us</h1>
+        <p>Here are the people who run Krystal and make it all happen.</p>
+
+        <section>
+            <div>
+                <img src="src/images/team/Oliver.png"/>
+                <h3>Oliver Lie</h3>
+            </div>
+            <p>
+                At the moment I'm the only one here. 
+                So everything good and bad is all my fault.
+            </p>
+            <p>Email: <a href="mailto:oliverlie@krystal3d.com">oliverlie@krystal3d.com</a></p>
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+
+    h1, h3, p {
+        text-align: center;
+        margin-left: 10%;
+        max-width: 80%;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        width: 80%;
+        height: fit-content;
+        background: transparent;
+        margin: 0 0 5svh 10%;
+    }
+
+    div {
+        overflow: hidden;
+        object-fit: contain;
+        border-radius: inherit;
+
+        width: 60%;
+        margin: 2.5svh 0 0 20%;
+    }
+
+    img {
+        width: 100%;
+        border-radius: inherit;
+        filter: var(--image-brightness);
+    }
+</style>
