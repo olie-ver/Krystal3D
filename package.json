@@ -9,11 +9,23 @@
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "astro": "^7.2.4",
+    "email-validator": "^2.0.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-email": "^6.9.3",
+    "resend": "^6.24.0",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@react-email/ui": "^6.9.3",
+    "@types/node": "^26.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5"
   }
 }

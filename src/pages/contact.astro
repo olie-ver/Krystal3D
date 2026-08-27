@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <main>
+        <h1>Contact Us</h1>
+        <p>
+            Do you have a question? Want to report a bug? Want to request something? 
+            Have something you want to tell us? Then please contact us!
+        </p>
+        <form action="" method="POST" id="contact-form">
+            <label for="contact-type">What's Up?</label>
+            <select id="contact-type" name="contact-type">
+                <option value="Question">General Question</option>
+                <option value="Bug">Found a Bug</option>
+                <option value="Request">Request</option>
+                <option value="Other">Other</option>
+            </select>
+            <p class="error" id="contact-err"></p>
+
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" maxlength="255" required/>
+            <p class="error" id="subject-err"></p>
+
+            <label for="return-address">Return Address</label>
+            <input type="email" name="return-address" id="return-address" required/>
+            <p class="error" id="addr-err"></p>
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message" maxlength="1023" required/>
+            <p class="error" id="message-err"></p>
+
+            <button type="submit" form="contact-form" value="Submit">Submit</button>
+            <p class="error" id="server-err"></p>
+        </form>
+    </main>
+</BaseLayout>
+<script>
+    const form = document.querySelector<HTMLFormElement>("#contact-form");
+
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            body: new FormData(form)
+        });
+
+        const data = await response.json();
+
+        const errors = data.errors;
+        const message = data.message;
+
+        document.getElementById("contact-err")!.textContent = errors.contact_type;
+        document.getElementById("subject-err")!.textContent = errors.subject;
+        document.getElementById("addr-err")!.textContent = errors.return_addr;
+        document.getElementById("message-err")!.textContent = errors.message;
+
+        if (errors.contact_type.length === 0 && errors.subject.length === 0
+            && errors.return_addr.length === 0 && errors.message.length === 0)
+        {
+            form.reset();
+        }
+
+        document.getElementById("server-err")!.textContent = message;
+    });
+</script>
+<style>
+    h1, p {
+        text-align: center;
+        margin-left: 10%;
+        max-width: 80%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color: orange;
+
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: 5%;
+        width: 80%;
+        padding: 2.5svh 5% 5svh 5%;
+        height: fit-content;
+        background: transparent;
+        margin-bottom: 5svh;
+    }
+
+    label {
+        margin-bottom: 5px;
+        color: var(--text-color);
+    }
+
+    input, textarea {
+        font-size: 0.8rem;
+        background-color: transparent;
+        color: var(--text-color);
+    }
+
+    #contact-type {
+        border-radius: 10px;
+        height: 5svh;
+        font-size: 0.8rem;
+
+        background-color: transparent;
+        border-color: var(--background-color);
+        color: var(--text-color);
+    }
+
+    #message {
+        height: 20svh;
+    }
+
+    button {
+        align-self: center;
+        margin-top: 2.5svh;
+
+        width: 50%;
+        height: 6svh;
+        font-size: 1rem;
+    }
+
+    .error {
+        color: red;
+    }
+
+</style>
