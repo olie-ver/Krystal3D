@@ -1,13 +1,16 @@
 ---
 import "../styles/globals.css"
 import Logo from "./Logo.astro"
+
+const { renderHome } = Astro.props;
 ---
 
 <div>
     <Logo/>
     <nav>
+        {renderHome && <a href="/">Home</a>}
         <a href="/projects">Projects</a>
-        <a>Games</a>
+        <!-- <a>Games</a> -->
     </nav>
 </div>
 
@@ -22,6 +25,7 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
 
+    margin-top: 2%;
     margin-right: max(10svw, 10svh);
 
     width: 80svw;
@@ -29,7 +33,6 @@ nav {
 }
 
 a {
-    cursor: pointer;
     border-style: none;
     background: transparent;
     border-radius: 25px;

@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
+<BaseLayout renderHome={true}>
     <main>
         <h1>Contact Us</h1>
         <p>
@@ -124,6 +124,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .error {
         color: red;
+    }
+
+    @media (orientation: landscape) {
+        form {
+            margin-left: calc(3.5% + env(safe-area-inset-left));
+            width: calc(80% - env(safe-area-inset-left));
+            padding: 5svh 5% 5svh 5%;
+        }
+
+        button {
+            border-radius: 15px;
+            width: 25%;
+            height: 15svh;
+        }
+
+        #contact-type {
+            height: 10svh;
+        }
     }
 
 </style>

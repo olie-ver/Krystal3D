@@ -54,11 +54,6 @@ img {
     filter: var(--image-brightness);
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .Info {
     width: 100%;
     border-top: 3px solid var(--card-border-color);
@@ -70,5 +65,13 @@ p {
 
 h1 {
     text-align: center;
+}
+
+@media (orientation: landscape) {
+    .Card {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
+    }
 }
 </style>

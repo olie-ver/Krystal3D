@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
 ---
 
-<BaseLayout>
+<BaseLayout renderHome={true}>
 	<main>
 		{
 			allProjects.map((project: any) => (
@@ -22,6 +22,19 @@ const allProjects = await getCollection("projects");
 			align-items: center;
 
 			width: 100%;
+		}
+
+		@media (orientation: landscape) {
+			main {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 10svh 5%;
+
+				margin-left: calc(10% + env(safe-area-inset-left));
+				margin-bottom: 5svh;
+
+				width: calc(80% - env(safe-area-inset-left));
+			}
 		}
 	</style>
 </BaseLayout>

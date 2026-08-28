@@ -1,27 +1,28 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout>
+<BaseLayout renderHome={true}>
     <main>
         <h1>About Us</h1>
         <p>Here are the people who run Krystal and make it all happen.</p>
 
-        <section>
-            <div>
-                <img src="src/images/team/Oliver.png"/>
-                <h3>Oliver Lie</h3>
-            </div>
-            <p>
-                At the moment I'm the only one here. 
-                So everything good and bad is all my fault.
-            </p>
-            <p>Email: <a href="mailto:oliverlie@krystal3d.com">oliverlie@krystal3d.com</a></p>
-        </section>
+        <div id="content">
+            <section>
+                <div>
+                    <img src="src/images/team/Oliver.png"/>
+                    <h3>Oliver Lie</h3>
+                </div>
+                <p>
+                    At the moment I'm the only one here. 
+                    So everything good and bad is all my fault.
+                </p>
+                <p>Email: <a href="mailto:oliverlie@krystal3d.com">oliverlie@krystal3d.com</a></p>
+            </section>
+        </div>
     </main>
 </BaseLayout>
 
 <style>
-
     h1, h3, p {
         text-align: center;
         margin-left: 10%;
@@ -37,21 +38,56 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         width: 80%;
         height: fit-content;
         background: transparent;
-        margin: 0 0 5svh 10%;
+        margin: 2.5svh 0 5svh 10%;
     }
 
     div {
         overflow: hidden;
-        object-fit: contain;
         border-radius: inherit;
 
         width: 60%;
         margin: 2.5svh 0 0 20%;
     }
 
+    #content {
+        width: 100%;
+        height: fit-content;
+        margin: 0;
+        overflow: auto;
+        border-radius: 0%;
+    }
+
     img {
         width: 100%;
         border-radius: inherit;
         filter: var(--image-brightness);
+    }
+
+    @media (orientation: landscape) {
+        h1, p, #content {
+            margin-left: calc(10% + env(safe-area-inset-left));
+            width: calc(80% - env(safe-area-inset-left));
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        #content {
+            display: flex;
+			gap: 10svh 5%;
+
+            width: calc(80% - env(safe-area-inset-left));
+        }
+
+        section {
+            width: 50%;
+            margin-left: 25%;
+        }
+
+        section > p {
+            margin-left: 10%;
+            width: 80%;
+        }
     }
 </style>
