@@ -37,17 +37,11 @@ Here are some of the games we have ready:
 
 ## Credits
 
-### Game Developers:
+**Game Developers:** Oliver Lie
 
-Oliver Lie
+**Play Testers:** Mutian Gao, Oliver Lie
 
-### Play Testers:
-
-Mutian Gao, Oliver Lie
-
-### 3D Artists:
-
-Oliver Lie
+**3D Artists:** Oliver Lie
 
 ## Support the Development:
 
@@ -66,12 +60,12 @@ Playing a game we've built on our website would help us immensely.
 Our play testing can't account for and find every single bug, so 
 the more people trying out our games, the more bugs we can find and fix.
 
-3. Donate.
+<!-- 3. Donate.
 
 Donating money would be such a huge help. With it, we can hire more 
 developers and artists to make 52Cards the best we can. It also 
 shows interest and investment, and tells us how much time we need 
-to dedicate to exceed your expectations.
+to dedicate to exceed your expectations. -->
 
 ## Technologies Used:
 - Godot
@@ -80,4 +74,4 @@ to dedicate to exceed your expectations.
 - GDScript
 
 ## Contact Us:
-Contact us at: (Insert Email Here)
+Contact us at: support@krystal3d.com

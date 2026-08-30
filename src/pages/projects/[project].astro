@@ -64,7 +64,82 @@ const { Content } = await render(p);
     }
 
     article {
+        width: 90%;
+        max-width: 900px;
         padding-bottom: 5%;
+        line-height: 1.7;
+    }
+
+    article h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.4rem;
+
+        font-size: 1.6rem;
+        border-bottom: 2px solid var(--card-border-color);
+    }
+
+    article h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+
+        font-size: 1.25rem;
+    }
+
+    article p {
+        margin: 0 0 1rem;
+    }
+
+    article ul,
+    article ol {
+        margin: 0.75rem 0 1.25rem;
+        padding-left: 1.75rem;
+    }
+
+    article li {
+        margin-bottom: 0.6rem;
+    }
+
+    article li::marker {
+        font-weight: bold;
+    }
+
+    article code {
+        padding: 0.15rem 0.35rem;
+
+        border-radius: 5px;
+        background: var(--card-border-color);
+
+        font-family: monospace;
+        font-size: 0.9em;
+    }
+
+    article pre {
+        box-sizing: border-box;
+
+        margin: 1.5rem 0;
+        padding: 1rem 1.25rem;
+
+        overflow-x: auto;
+
+        border-radius: 10px;
+        background: #1e1e1e;
+
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    article pre code {
+        padding: 0;
+
+        background: transparent;
+
+        font-size: 0.9rem;
+        white-space: pre;
+    }
+
+    article a {
+        font-weight: 500;
     }
 
     section {

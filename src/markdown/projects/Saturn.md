@@ -29,15 +29,13 @@ worthy, and we suggest other solvers to be used while we develop it
 further. Other educational materials can be downloaded and viewed for 
 free.
 
+GitHub: https://github.com/olie-ver/SATurn
+
 ## Credits:
 
-### Developers:
+**Developer:** Oliver Lie
 
-Oliver Lie
-
-### Educational Material Writers:
-
-Oliver Lie
+**Educational Material Writer** Oliver Lie
 
 ## Support the Development:
 
@@ -58,10 +56,20 @@ is just scratching the surface. If you have an algorithm or heuristic
 you'd like to see implemented, let us know and we will do our best to 
 research, implement, and report our findings. 
 
-3. Donate.
+<!-- 3. Donate.
 
 Making a SAT solver isn't easy and it takes a lot of work, and writing 
 up technical research isn't any better either. By donating to the
 development of Saturn, we can invest more time in its implementation 
 as well as its accompanying research report to make this knowledge more 
-accessible.
+accessible. -->
+
+## License:
+
+As of now, Saturn isn't ready for release, and is unlicensed.
+Since it is  unlicensed, creating derivatives, distributing, and reproducing 
+any and all files is prohibited. However, since it's an educational project,
+this doesn't mean we disallow downloading/viewing/using any of the files. 
+You are 100% allowed to download, view, and use any and all of the files, but only 
+for personal use. If you are to download anything from the GitHub, you can do 
+anything you want **but it must stay on your machine at all times.**
