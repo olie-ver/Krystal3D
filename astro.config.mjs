@@ -26,6 +26,7 @@ export default defineConfig({
 
   site: "https://www.krystal3d.com",
   base: "/",
-  trailingSlash: "always",
+  trailingSlash: "never",
+  output: "server",
   adapter: vercel(),
 });
