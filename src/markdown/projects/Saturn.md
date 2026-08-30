@@ -73,3 +73,9 @@ this doesn't mean we disallow downloading/viewing/using any of the files.
 You are 100% allowed to download, view, and use any and all of the files, but only 
 for personal use. If you are to download anything from the GitHub, you can do 
 anything you want **but it must stay on your machine at all times.**
+
+## Downloads:
+
+These downloads are meant to be downloaded, viewed, and hopefully enjoyed by all.
+
+**From Scratch (First Draft):** https://github.com/olie-ver/SATurn/blob/main/paper/paper.pdf
