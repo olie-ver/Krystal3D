@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/vercel": "^11.0.8",
+    "@stripe/cli": "^1.50.6",
     "@stripe/stripe-js": "^9.14.0",
     "astro": "^7.2.4",
     "email-validator": "^2.0.4",

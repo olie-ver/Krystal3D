@@ -21,6 +21,8 @@ export default defineConfig({
   env: {
     schema: {
       RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
+      SECRET_STRIPE_KEY: envField.string({ context: "server", access: "secret" }),
+      SECRET_STRIPE_WEBHOOK: envField.string({ context: "server", access: "secret" }),
     }
   },
 

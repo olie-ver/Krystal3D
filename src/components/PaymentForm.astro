@@ -1,0 +1,197 @@
+---
+export const prerender = false;
+---
+<div id="form">
+    <label id="email-label" for="email">Email:</label>
+    <input id="email" type="email" autocomplete="email" required />
+
+    <label for="name">Name:</label>
+    <input id="name" type="text" autocomplete="name"/>
+
+    <label for="message">Message (Optional:</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+
+    <label for="amount">Support Payment:</label>
+    <input id="amount" name="amount" type="number" min="1" step="0.01" value="5"/>
+
+    <div id="payment-element"></div>
+
+    <button id="submit-payment" type="button">
+        Support Krystal
+    </button>
+
+    <p id="payment-error"></p>
+</div>
+
+<style>
+    #form {
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        width: 80%;
+        margin-left: 10%;
+        height: fit-content;
+        /* background: transparent; */
+        /* background-color: orange; */
+        margin-bottom: 5svh;
+    }
+
+    #email-label {
+        margin-top: 3svh;
+    }
+
+    label {
+        color: var(--text-color);
+        margin-top: 1svh;
+        margin-left: 10%;
+        width: 75%;
+    }
+
+    input, textarea {
+        align-self: center;
+        width: 75%;
+        background: none;
+        color: var(--text-color);
+    }
+
+    #payment-element {
+        align-self: center;
+        width: 80%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    button {
+        align-self: center;
+        margin-top: 2.5svh;
+
+        width: 50%;
+        height: 6svh;
+        font-size: 1rem;
+    }
+
+</style>
+
+<script>
+    import { loadStripe } from "@stripe/stripe-js";
+
+    const stripe = await loadStripe(import.meta.env.PUBLIC_STRIPE_KEY);
+
+    if (!stripe) {
+        throw new Error("Failed to load Stripe");
+    }
+
+    const amountInput = document.querySelector<HTMLInputElement>("#amount");
+    const emailInput = document.querySelector<HTMLInputElement>("#email");
+    const nameInput = document.querySelector<HTMLInputElement>("#name");
+    const submitButton = document.querySelector<HTMLButtonElement>("#submit-payment");
+    const messageInput = document.querySelector<HTMLTextAreaElement>("#message");
+    const paymentError = document.querySelector<HTMLParagraphElement>("#payment-error");
+    const paymentElementContainer = document.querySelector<HTMLDivElement>("#payment-element");
+
+    if (!amountInput || !emailInput || !nameInput || !submitButton || !messageInput || 
+        !paymentError || !paymentElementContainer)
+    {
+        throw new Error("Payment form elements not found");
+    }
+
+    const initialAmount = Number(amountInput.value);
+
+    if (!Number.isFinite(initialAmount) || initialAmount <= 0) {
+        throw new Error("Invalid initial amount");
+    }
+
+    const response = await fetch("/api/create-payment-intent", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            amount: Math.round(initialAmount * 100),
+        }),
+    });
+
+    const data = await response.json();
+    const paymentIntentId = data.paymentIntentId;
+
+    if (!response.ok) {
+        throw new Error(data.error ?? "Unable to create payment intent");
+    }
+
+    const elements = stripe.elements({
+        clientSecret: data.clientSecret,
+        appearance: {
+            // We'll style this later
+        },
+    });
+
+    async function updatePaymentIntent() {
+        const amount = Number(amountInput!.value);
+
+        if (!Number.isFinite(amount) || amount <= 0) {
+            return;
+        }
+
+        const response = await fetch("/api/update-payment-intent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                paymentIntentId,
+                amount: Math.round(amount * 100),
+                email: emailInput!.value,
+                name: nameInput!.value,
+                message: messageInput!.value,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            console.error(data.error);
+        }
+    }
+
+    const paymentElement = elements.create("payment");
+
+    paymentElement.mount(paymentElementContainer);
+
+    amountInput.addEventListener("change", updatePaymentIntent);
+    emailInput.addEventListener("change", updatePaymentIntent);
+    nameInput.addEventListener("change", updatePaymentIntent);
+    messageInput.addEventListener("change", updatePaymentIntent);
+    amountInput.addEventListener("change", updatePaymentIntent);
+
+    submitButton.addEventListener("click", async () => {
+        paymentError.textContent = "";
+
+        if (!emailInput.validity.valid) {
+            emailInput.reportValidity();
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Processing...";
+
+        const { error } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                receipt_email: emailInput.value,
+            },
+            redirect: "if_required",
+        });
+
+        if (error) {
+            paymentError.textContent = error.message ?? "Unable to process payment.";
+
+            submitButton.disabled = false;
+            submitButton.textContent = "Support Krystal";
+            return;
+        }
+
+        submitButton.textContent = "Payment successful!";
+    });
+</script>
