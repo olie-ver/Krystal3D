@@ -41,7 +41,7 @@ GitHub: https://github.com/olie-ver/SATurn
 
 Here are some ways you can support the development of Saturn.
 
-1. Ask Questions.
+### 1. Ask Questions.
 
 Read through the educational materials and ask questions. Questions 
 like "why is X implemented this way," or "what happens if we change 
@@ -49,20 +49,20 @@ X," would greatly help as we aim to answer them in our educational
 materials. Reviewing the educational materials and suggesting 
 changes/revisions would be greatly appreciated.
 
-2. Propose new Features:
+### 2. Propose new Features:
 
 The world of SAT solving is very big and what is covered (DPLL and CDCL)
 is just scratching the surface. If you have an algorithm or heuristic
 you'd like to see implemented, let us know and we will do our best to 
 research, implement, and report our findings. 
 
-<!-- 3. Donate.
+### 3. Donate.
 
 Making a SAT solver isn't easy and it takes a lot of work, and writing 
 up technical research isn't any better either. By donating to the
 development of Saturn, we can invest more time in its implementation 
 as well as its accompanying research report to make this knowledge more 
-accessible. -->
+accessible.
 
 ## License:
 

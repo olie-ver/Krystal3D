@@ -1,11 +1,12 @@
 ---
+export const prerender = true;
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Member from "../components/Member.astro"
 
 import { getCollection } from "astro:content";
 
 const allMembers = await getCollection("members");
-console.log(allMembers);
 ---
 <BaseLayout renderHome={true}>
     <main>

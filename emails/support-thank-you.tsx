@@ -2,11 +2,12 @@ import { Body, Container, Html, Preview, Text } from "react-email";
 
 interface SupportThankYouEmailProps {
     amount: string;
+    reason: string;
     name?: string;
     message?: string;
 }
 
-export default function SupportThankYouEmail({ amount, name, message }: SupportThankYouEmailProps) {
+export default function SupportThankYouEmail({ amount, reason, name, message }: SupportThankYouEmailProps) {
     return (
         <Html>
             <Preview>
@@ -23,6 +24,10 @@ export default function SupportThankYouEmail({ amount, name, message }: SupportT
                         Thank you for supporting Krystal3D.
                         Your {amount} support payment was
                         successfully received.
+                    </Text>
+
+                    <Text>
+                        Reason: {reason}
                     </Text>
 
                     {message && (

@@ -52,11 +52,11 @@ don't have much testing on other operating systems other than that it
 compiles. If you were to try it on Windows and Linux and then tell us 
 about your experience, it would be greatly appreciated.
 
-<!-- ### 3. Donate
+### 3. Donate
 
 Supporting the Test++ development monetarily helps the development 
 greatly. It would allow us to use it and try it out on a larger 
-range of devices so we can be more proactive in its development. -->
+range of devices so we can be more proactive in its development.
 
 ## License:
 

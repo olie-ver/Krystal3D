@@ -46,7 +46,7 @@ Here are some of the games we have ready:
 ## Support the Development:
 
 Here are some ways you can support the development:
-1. Suggest a game.
+### 1. Suggest a game.
 
 Suggesting a card game is a great way to support the development!
 It gives us ideas, feedback, and shows interest in the project.
@@ -54,18 +54,18 @@ If you're going to suggest a card game, please tell us the name,
 the rules, how to play it, and any other resources we can use as a
 reference.
 
-2. Play our games on our website.
+### 2. Play our games on our website.
 
 Playing a game we've built on our website would help us immensely. 
 Our play testing can't account for and find every single bug, so 
 the more people trying out our games, the more bugs we can find and fix.
 
-<!-- 3. Donate.
+### 3. Donate.
 
 Donating money would be such a huge help. With it, we can hire more 
 developers and artists to make 52Cards the best we can. It also 
 shows interest and investment, and tells us how much time we need 
-to dedicate to exceed your expectations. -->
+to dedicate to exceed your expectations.
 
 ## Technologies Used:
 - Godot

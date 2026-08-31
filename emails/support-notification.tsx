@@ -3,11 +3,12 @@ import { Body, Container, Html, Preview, Text } from "react-email";
 interface SupportNotificationEmailProps {
     amount: string;
     email: string;
+    reason: string;
     name?: string;
     message?: string;
 }
 
-export default function SupportNotificationEmail({ amount, email, name, message }: SupportNotificationEmailProps) {
+export default function SupportNotificationEmail({ amount, email, reason, name, message }: SupportNotificationEmailProps) {
     return (
         <Html>
             <Preview>
@@ -24,6 +25,10 @@ export default function SupportNotificationEmail({ amount, email, name, message 
 
                     <Text>
                         Customer email: {email}
+                    </Text>
+
+                    <Text>
+                        Reason: {reason}
                     </Text>
 
                     {name && (

@@ -1,7 +1,11 @@
 ---
 export const prerender = false;
+
+const { reason } = Astro.props;
 ---
 <form id="form">
+    <h1>Support Form</h1>
+    <input id="reason" type="hidden" value={reason}/>
     <label id="email-label" for="email">Email:</label>
     <input id="email" type="email" autocomplete="email" required />
 
@@ -11,7 +15,7 @@ export const prerender = false;
     <label for="message">Message (Optional):</label>
     <textarea id="message" name="message" rows="4"></textarea>
 
-    <label for="amount">Support Payment:</label>
+    <label for="amount">Support Amount:</label>
     <input id="amount" name="amount" type="number" min="1" step="0.01" value="5.00"/>
 
     <div id="payment-element"></div>
@@ -34,6 +38,10 @@ export const prerender = false;
         margin-left: 10%;
         height: fit-content;
         margin-bottom: 5svh;
+    }
+
+    h1 {
+        text-align: center;
     }
 
     #email-label {
@@ -85,6 +93,11 @@ export const prerender = false;
         border-radius: 20px;
         color: var(--text-color);
         border: 1px solid var(--background-color);
+        margin-bottom: 5svh;
+    }
+
+    p {
+        text-align: center;
     }
 
     @media (orientation: landscape) {
@@ -110,6 +123,7 @@ export const prerender = false;
     }
 
     const form = document.querySelector<HTMLFormElement>("#form");
+    const reasonInput = document.querySelector<HTMLInputElement>("#reason");
     const amountInput = document.querySelector<HTMLInputElement>("#amount");
     const emailInput = document.querySelector<HTMLInputElement>("#email");
     const nameInput = document.querySelector<HTMLInputElement>("#name");
@@ -118,8 +132,8 @@ export const prerender = false;
     const paymentError = document.querySelector<HTMLParagraphElement>("#payment-error");
     const paymentElementContainer = document.querySelector<HTMLDivElement>("#payment-element");
 
-    if (!form || !amountInput || !emailInput || !nameInput || !messageInput ||
-        !submitButton || !paymentError || !paymentElementContainer)
+    if (!form || !amountInput || !emailInput || !nameInput || !reasonInput ||
+        !messageInput || !submitButton || !paymentError || !paymentElementContainer)
     {
         throw new Error("Payment form elements not found");
     }
@@ -196,6 +210,7 @@ export const prerender = false;
                                 },
                                 body: JSON.stringify({
                                     sessionId: data.sessionId,
+                                    reason: reasonInput.value,
                                     amount: Math.round(amount * 100),
                                     name: nameInput.value,
                                     message: messageInput.value,
