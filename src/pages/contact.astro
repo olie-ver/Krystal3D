@@ -76,7 +76,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     form {
         display: flex;
         flex-direction: column;
-        background-color: orange;
 
         border-radius: 25px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -97,6 +96,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         font-size: 0.8rem;
         background-color: transparent;
         color: var(--text-color);
+        border: 1px solid var(--background-color);
+        height: 1rem;
     }
 
     #contact-type {
@@ -128,19 +129,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     @media (orientation: landscape) {
         form {
-            margin-left: calc(3.5% + env(safe-area-inset-left));
+            margin-left: calc(5% + env(safe-area-inset-left));
             width: calc(80% - env(safe-area-inset-left));
             padding: 5svh 5% 5svh 5%;
         }
 
-        button {
-            border-radius: 15px;
-            width: 25%;
-            height: 15svh;
+        input {
+            border-radius: 5px;
+            height: 5svh;
         }
 
-        #contact-type {
-            height: 10svh;
+        textarea {
+            border-radius: 5px;
+        }
+
+        button {
+            border: 1px solid var(--background-color);
+            background-color: transparent;
+            border-radius: 25px;
+            width: 15%;
+            height: 7svh;
+            font-size: 1rem;
+            color: var(--text-color);
         }
     }
 

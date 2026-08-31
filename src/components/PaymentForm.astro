@@ -44,14 +44,25 @@ export const prerender = false;
         color: var(--text-color);
         margin-top: 1svh;
         margin-left: 10%;
+        margin-bottom: 5px;
         width: 75%;
     }
 
     input, textarea {
         align-self: center;
-        width: 75%;
+        padding: 1% 5% 1% 5%;
+        width: 65%;
         background: none;
         color: var(--text-color);
+
+        font-size: 0.8rem;
+        border: 1px solid var(--background-color);
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    input {
+        height: 1rem;
     }
 
     #payment-element {
@@ -62,12 +73,29 @@ export const prerender = false;
     }
 
     button {
+        cursor: pointer;
         align-self: center;
         margin-top: 2.5svh;
 
         width: 50%;
         height: 6svh;
         font-size: 1rem;
+
+        background: none;
+        border-radius: 20px;
+        color: var(--text-color);
+        border: 1px solid var(--background-color);
+    }
+
+    @media (orientation: landscape) {
+        input, textarea {
+            padding: 0.5% 1% 0.5% 1%;
+            width: 78%;
+        }
+
+        button {
+            width: 20%;
+        }
     }
 
 </style>
