@@ -3,8 +3,8 @@ import { z } from "astro/zod";
 import { glob } from 'astro/loaders';
 
 const projects = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/markdown/projects" }),
-  schema: ({ image }) => z.object({
+    loader: glob({ pattern: "**/*.md", base: "./src/markdown/projects" }),
+    schema: ({ image }) => z.object({
         title: z.string(),
         status: z.string(),
         version: z.string(),
@@ -23,4 +23,17 @@ const projects = defineCollection({
     })
 });
 
-export const collections = { projects };
+const members = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/markdown/members" }),
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        bio: z.string(),
+        img: z.object({
+            src: image(),
+            alt: z.string()
+        }),
+        email: z.string()
+    })
+});
+
+export const collections = { projects, members };

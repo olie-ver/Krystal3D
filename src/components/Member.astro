@@ -1,0 +1,62 @@
+---
+const { member } = Astro.props;
+---
+
+<section>
+    <div>
+        <img src={member.img.src.src} alt="A profile of this team member"/>
+        <h3>Oliver Lie</h3>
+    </div>
+    <p>
+        {member.bio}
+    </p>
+    <p>Email: <a href=`mailto:${member.email}`>{member.email}</a></p>
+</section>
+
+<style>
+section {
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    width: 80%;
+    height: fit-content;
+    background: transparent;
+    margin: 2.5svh 0 5svh 10%;
+}
+
+div {
+    overflow: hidden;
+    border-radius: inherit;
+
+    width: 60%;
+    margin: 2.5svh 0 0 20%;
+}
+
+img {
+    width: 100%;
+    border-radius: inherit;
+    filter: var(--image-brightness);
+}
+
+@media (orientation: landscape) {
+    h1, h3, p {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    section > p {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+</style>
