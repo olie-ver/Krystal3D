@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request }) => {
     try {
         const {
             sessionId,
+            reason,
             amount,
             name,
             message,
@@ -76,6 +77,7 @@ export const POST: APIRoute = async ({ request }) => {
                     typeof message === "string"
                         ? message.trim()
                         : "",
+                reason: reason,
             },
         });
 

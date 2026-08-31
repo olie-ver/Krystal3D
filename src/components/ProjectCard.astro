@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 const { project } = Astro.props;
 ---
 
@@ -20,6 +22,7 @@ const { project } = Astro.props;
         <p>Last Updated: {project.lastUpdated.toString().substring(0, 10)}</p>
     </div>
 </div>
+
 <style>
 .Card {
     display: flex;

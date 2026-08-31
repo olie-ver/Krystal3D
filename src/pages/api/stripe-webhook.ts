@@ -47,8 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (event.type === "checkout.session.completed") {
         const session = event.data.object;
 
-        const email =
-            session.customer_details?.email;
+        const email = session.customer_details?.email;
 
         if (!email) {
             console.error(
@@ -75,6 +74,10 @@ export const POST: APIRoute = async ({ request }) => {
 
         const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
+        const reason = session.metadata?.reason as string;
+
+        console.log(reason);
+
         try {
             const notification =
                 await resend.emails.send({
@@ -87,6 +90,7 @@ export const POST: APIRoute = async ({ request }) => {
                     react:
                         SupportNotificationEmail({
                             amount,
+                            reason,
                             email,
                             name,
                             message,
@@ -107,6 +111,7 @@ export const POST: APIRoute = async ({ request }) => {
                     react:
                         SupportThankYouEmail({
                             amount,
+                            reason,
                             name,
                             message,
                         }),
