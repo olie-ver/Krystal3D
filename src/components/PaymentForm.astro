@@ -1,0 +1,215 @@
+---
+export const prerender = false;
+---
+<form id="form">
+    <label id="email-label" for="email">Email:</label>
+    <input id="email" type="email" autocomplete="email" required />
+
+    <label for="name">Name (Optional):</label>
+    <input id="name" type="text" autocomplete="name"/>
+
+    <label for="message">Message (Optional):</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+
+    <label for="amount">Support Payment:</label>
+    <input id="amount" name="amount" type="number" min="1" step="0.01" value="5.00"/>
+
+    <div id="payment-element"></div>
+
+    <button id="submit-payment" type="button">
+        Support Krystal
+    </button>
+
+    <p id="payment-error"></p>
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        width: 80%;
+        margin-left: 10%;
+        height: fit-content;
+        margin-bottom: 5svh;
+    }
+
+    #email-label {
+        margin-top: 3svh;
+    }
+
+    label {
+        color: var(--text-color);
+        margin-top: 1svh;
+        margin-left: 10%;
+        width: 75%;
+    }
+
+    input, textarea {
+        align-self: center;
+        width: 75%;
+        background: none;
+        color: var(--text-color);
+    }
+
+    #payment-element {
+        align-self: center;
+        width: 80%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    button {
+        align-self: center;
+        margin-top: 2.5svh;
+
+        width: 50%;
+        height: 6svh;
+        font-size: 1rem;
+    }
+
+</style>
+
+<script>
+    import { loadStripe } from "@stripe/stripe-js";
+
+    const stripe = await loadStripe(import.meta.env.PUBLIC_STRIPE_KEY);
+
+    if (!stripe) {
+        throw new Error("Failed to load Stripe");
+    }
+
+    const form = document.querySelector<HTMLFormElement>("#form");
+    const amountInput = document.querySelector<HTMLInputElement>("#amount");
+    const emailInput = document.querySelector<HTMLInputElement>("#email");
+    const nameInput = document.querySelector<HTMLInputElement>("#name");
+    const messageInput = document.querySelector<HTMLTextAreaElement>("#message");
+    const submitButton = document.querySelector<HTMLButtonElement>("#submit-payment");
+    const paymentError = document.querySelector<HTMLParagraphElement>("#payment-error");
+    const paymentElementContainer = document.querySelector<HTMLDivElement>("#payment-element");
+
+    if (!form || !amountInput || !emailInput || !nameInput || !messageInput ||
+        !submitButton || !paymentError || !paymentElementContainer)
+    {
+        throw new Error("Payment form elements not found");
+    }
+
+    const initialAmount = Number(amountInput.value);
+
+    if (!Number.isFinite(initialAmount) || initialAmount <= 0) {
+        throw new Error("Invalid initial amount");
+    }
+
+    const response = await fetch("/api/create-checkout-session",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                amount: Math.round(initialAmount * 100),
+            }),
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error ?? "Unable to create checkout session");
+    }
+
+    if (!data.clientSecret || !data.sessionId) {
+        throw new Error("Checkout Session did not return the required information");
+    }
+
+    const checkout = stripe.initCheckoutElementsSdk({clientSecret: data.clientSecret});
+    const paymentElement = checkout.createPaymentElement();
+
+    paymentElement.mount(paymentElementContainer);
+
+    const loadActionsResult = await checkout.loadActions();
+
+    if (loadActionsResult.type !== "success") {
+        throw new Error("Unable to initialize payment");
+    }
+
+    const actions = loadActionsResult.actions;
+
+    submitButton.addEventListener(
+        "click",
+        async () => {
+            paymentError.textContent = "";
+
+            if (!emailInput.validity.valid) {
+                emailInput.reportValidity();
+                return;
+            }
+
+            const amount = Number(amountInput.value);
+
+            if (!Number.isFinite(amount) || amount <= 0) {
+                amountInput.reportValidity();
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Processing...";
+
+            try {
+                const updateResult = await actions.runServerUpdate(async () =>
+                    {
+                        const updateResponse = await fetch("/api/update-checkout-session",
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    sessionId: data.sessionId,
+                                    amount: Math.round(amount * 100),
+                                    name: nameInput.value,
+                                    message: messageInput.value,
+                                }),
+                            }
+                        );
+
+                        if (!updateResponse.ok) {
+                            const updateData = await updateResponse.json();
+                            throw new Error(updateData.error ?? "Unable to update checkout session");
+                        }
+                    }
+                );
+
+                if (updateResult.type === "error") {
+                    throw new Error(updateResult.error.message ?? "Unable to update checkout session");
+                }
+
+                const result = await actions.confirm({ email: emailInput.value.trim(), redirect: "if_required" });
+
+                if (result.type === "error") {
+                    paymentError.textContent = result.error.message ?? "Unable to process payment.";
+
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Support Krystal";
+
+                    return;
+                }
+
+                paymentError.textContent = "Payment successful!";
+                submitButton.disabled = false;
+                submitButton.textContent = "Support Krystal";
+
+                form.reset();
+            } catch (error) {
+                console.error(error);
+
+                paymentError.textContent = error instanceof Error ? error.message : "Unable to process payment.";
+
+                submitButton.disabled = false;
+                submitButton.textContent = "Support Krystal";
+            }
+        }
+    );
+</script>

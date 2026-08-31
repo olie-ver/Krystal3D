@@ -1,5 +1,7 @@
 ---
+export const prerender = false;
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PaymentForm from "../components/PaymentForm.astro";
 ---
 <BaseLayout renderHome={true}>
     <main>
@@ -19,6 +21,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/projects/Test++">Test++</a>, 
             and an upcoming project: "Pickup".
         </p>
+        <PaymentForm/>
     </main>
 </BaseLayout>
 

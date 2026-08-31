@@ -15,12 +15,15 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/vercel": "^11.0.8",
+    "@stripe/cli": "^1.50.6",
+    "@stripe/stripe-js": "^9.15.0",
     "astro": "^7.2.4",
     "email-validator": "^2.0.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-email": "^6.9.3",
     "resend": "^6.24.0",
+    "stripe": "^22.6.0",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
