@@ -2,6 +2,7 @@
 import { defineConfig, envField, fontProviders } from 'astro/config';
 
 import vercel from "@astrojs/vercel";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,4 +32,5 @@ export default defineConfig({
   trailingSlash: "never",
   output: "server",
   adapter: vercel(),
+  integrations: [sitemap()],
 });
