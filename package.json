@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.8",
     "@stripe/cli": "^1.50.6",
     "@stripe/stripe-js": "^9.15.0",
