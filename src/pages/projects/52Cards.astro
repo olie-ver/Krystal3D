@@ -1,0 +1,188 @@
+---
+const prerender = true;
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Head from "../../components/Head.astro";
+import Logo from "../../images/52Cards.png"
+
+import PaymentForm from "../../components/PaymentForm.astro";
+
+import "../../styles/project.css"
+---
+
+<BaseLayout renderHome={true}>
+    <Head slot="head"
+        title="Krystal - 52Cards"
+        description="52Cards is an upcoming desktop game where you get to play 52
+            different card games against multiple CPU opponents. It is currently being 
+            ported to the web so you can see and play our progress for yourself."
+        keywords="52cards, 52 cards, krystal 52cards, krystal 52 cards, krystal card games"
+    />
+
+    <main>
+        <section>
+            <h1>52Cards</h1>
+            <img id="logo" src={Logo.src} alt="Saturn's logo"/>
+
+            <div id="status-bar">
+                <p>Status: Ongoing development</p>
+                <p id="middle">Version: N/A</p>
+                <p>License: Unlicensed</p>
+            </div>
+            
+            <p>
+                52Cards is an upcoming desktop game that comes with 52 card games bundled together.
+                We are working hard to port some of the games that we have created onto this website
+                so you can play them too, for free. Proudly developed in 
+                <a href="https://godotengine.org">Godot</a> and models made using 
+                <a href="https://blender.org">Blender</a>.
+            </p>
+        </section>
+
+        <section>
+            <h1>Credits</h1>
+            <p><strong>Game Developer:</strong> Oliver Lie</p>
+            <p><strong>Play Testers:</strong> Mutian Gao, Oliver Lie</p>
+            <p><strong>3D Artists:</strong> Oliver Lie</p>
+        </section>
+
+        <section>
+            <h1>Support the Development</h1>
+            <p>Here are some ways you can support the development of 52Cards:</p>
+
+            <h2>1. Suggest a game</h2>
+            <p>
+                Suggesting a card game is a great way to support the development!
+                It gives us ideas, feedback, and shows interest in the project.
+                If you're going to suggest a card game, please tell us the name,
+                the rules, how to play it, and any other resources we can use as a
+                reference.
+            </p>
+
+            <h2>2. Play a Game on our Website</h2>
+            <p>
+                Playing a game we've built on our website would help us immensely. 
+                Our play testing can't account for and find every single bug, so 
+                the more people trying out our games, the more bugs we can find and fix.
+            </p>
+
+            <h2>3. Financial Support</h2>
+            <p>
+                Financial support would be such a huge help. With it, we can hire more 
+                developers and artists to make 52Cards the best we can. It also 
+                shows interest and investment, and tells us how much time we need 
+                to dedicate to exceed your expectations.
+            </p>
+        </section>
+
+        <section>
+            <h1>Games in Progress of Porting:</h1>
+            <ul>
+                <li>Slapjack</li>
+                <li>Egyptian Rat Screw</li>
+                <li>Solitaire</li>
+                <li>Speed</li>
+            </ul>
+        </section>
+
+        <section>
+            <input id="show-form" type="checkbox"/>
+            <label for="show-form">Click to Support</label>
+            <span>
+                <PaymentForm reason="Saturn"/>
+            </span>
+        </section>
+    </main>
+</BaseLayout>
+<style>
+section {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 4% 0 0 10%;
+    padding-bottom: 2.5%;
+    width: 80%;
+    height: fit-content;
+    background: transparent;
+    margin-bottom: 2svh;
+    line-height: 1.7;
+}
+
+#logo {
+   filter: var(--image--brightness);
+   max-width: 30%;
+}
+
+#status-bar {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+    border-top: 3px solid var(--card-border-color);
+    border-bottom: 3px solid var(--card-border-color);
+}
+
+#middle {
+    border-left: 3px solid var(--card-border-color);
+    border-right: 3px solid var(--card-border-color);
+}
+
+p {
+    max-width: 80%;
+}
+
+code {
+    text-align: left;
+    width: 75%;
+    color: #9ECBFF;
+    background-color: #24292e;
+}
+
+span {
+    color: #B392F0;
+}
+
+label~span {
+    width: 100%;
+}
+
+#show-form, label~span {
+    display: none;
+}
+
+#show-from, #show-form~label {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 3svh;
+}
+
+#show-form~label {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+#show-form:checked~span {
+    display: block;
+}
+
+ul {
+    width: 75%;
+}
+
+li {
+    text-align: left;
+}
+
+@media (orientation: landscape) {
+    main {
+        margin-left: calc(env(safe-area-inset-left));
+    }
+}
+</style>
