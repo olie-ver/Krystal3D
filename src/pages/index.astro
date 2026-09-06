@@ -2,9 +2,15 @@
 export const prerender = true;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Head from '../components/Head.astro';
 ---
 
 <BaseLayout>
+	<Head slot="head"
+		title="Krystal" 
+		description="Krystal's homepage. View the latest on what we're doing as well as our projects."
+		keywords="krystal, krystal3d, krystal home, krystal3d home"
+	/>
 	<main>
 		<!-- Will put news about projects and games here -->
 	</main>

@@ -1,15 +1,15 @@
 ---
 title: "Test++"
 status: "Release"
-version: "20.1.2"
+version: "20.1.3"
 
 contributors: ["Oliver Lie"]
 
 openSource: "Yes"
-license: Custom
+license: MIT
 
 startDate: 2026-03-30
-lastUpdated: 2026-07-24
+lastUpdated: 2026-08-30
 
 repo: "https://github.com/olie-ver/TestPlusPlus"
 
@@ -20,7 +20,16 @@ img:
 tags: ["C++", "Test++", "unit testing"]
 
 svg: true
+
+description: "Test++ is a C++ unit testing framework and CLI tool meant to help C++ 
+            developers streamline testing their C++ code. Learn more about the latest version
+            of Test++, how to install it, and how to use it here."
+
+keywords: "test++, testpp, testplusplus, test plus plus, krystal test++, krystal testplusplus,
+            krystal test plus plus, c++ unit testing framework, cpp unit testing framework, c++ unit test
+            cpp unit test"
 ---
+
 Test++ is a header-only C++ unit testing library and framework. It 
 is available for download and installation on Mac, Windows, and Linux,
 however, its development is done on Mac, and its usage in other operating 

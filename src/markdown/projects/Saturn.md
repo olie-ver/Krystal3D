@@ -17,9 +17,11 @@ img:
     src: "../../images/Saturn.svg"
     alt: "A simple svg of Saturn"
 
-tags: ["C++", "SAT solving", "educational"]
-
 svg: true
+
+description: ""
+keywords: ""
+
 ---
 Saturn is a complete SAT solver built in C++20. It is currently 
 educational material meant to teach others how SAT solvers operate

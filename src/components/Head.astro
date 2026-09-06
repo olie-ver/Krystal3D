@@ -1,0 +1,22 @@
+---
+import { Font } from "astro:assets"
+
+const { title, description, keywords } = Astro.props;
+---
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, 
+            maximum-scale=2, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta name="author" content="Oliver Lie" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+
+    <Font cssVariable="--font-tilt-prism"/>
+    <title>{title}</title>
+</head>

@@ -2,9 +2,16 @@
 export const prerender = true;
 
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Head from '../components/Head.astro';
 ---
 
 <BaseLayout renderHome={true}>
+    <Head slot="head"
+        title="Krystal - Contact Us"
+        description="Krystal's contact page. Contact us if you need support with one of our tools,
+            would like to suggest a feature, report a bug, hire us for something, etc."
+        keywords="krystal, krystal3d, contact krystal, krystal contact page, krystal support"
+    />
     <main>
         <h1>Contact Us</h1>
         <p>

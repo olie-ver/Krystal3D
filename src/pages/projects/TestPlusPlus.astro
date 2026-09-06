@@ -1,0 +1,94 @@
+---
+const prerender = true;
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Head from "../../components/Head.astro";
+import Logo from "../../images/Krystal.svg"
+
+---
+
+<BaseLayout renderHome={true}>
+    <Head slot="head"
+        title="Krystal - Test++"
+        description="Test++ is a C++ unit testing framework and CLI tool meant to help C++ 
+            developers streamline testing their C++ code. Learn more about the latest version
+            of Test++, how to install it, and how to use it here."
+        keywords="test++, testpp, testplusplus, test plus plus, krystal test++, krystal testplusplus,
+            krystal test plus plus, c++ unit testing framework, cpp unit testing framework, c++ unit test
+            cpp unit test"
+    />
+
+    <main>
+        <section>
+            <h1>Test++</h1>
+            <img id="logo" src={Logo.src} alt="Placeholder for Test++'s logo"/>
+
+            <div id="status-bar">
+                <p>Status: Release</p>
+                <p id="middle">Version: 20.1.3</p>
+                <p>License: MIT</p>
+            </div>
+            
+            <p>
+                Test++ is a header-only C++ unit testing library and framework. It is 
+                available for download and installation on MacOS, Windows, and Linux. That
+                being said, its development was largely done on MacOS, and as such, its 
+                usage on Windows and Linux systems is largely untested. It is currently 
+                built using C++20. Using Test++ with other C++ standards is largely untested.
+            </p>
+        </section>
+
+        <article>
+            <section>
+
+            </section>
+        </article>
+    </main>
+</BaseLayout>
+<style>
+
+section {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 2.5%;
+    width: 95%;
+    height: fit-content;
+    background: transparent;
+    margin-bottom: 5svh;
+}
+
+p {
+    text-align: center;
+    max-width: 80%;
+}
+
+#logo {
+   filter: var(--logo-filter);
+}
+
+#status-bar {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+    border-top: 3px solid var(--card-border-color);
+    border-bottom: 3px solid var(--card-border-color);
+}
+
+#status-bar p {
+    align-self: center;
+    margin: 0;
+}
+
+#middle {
+    border-left: 3px solid var(--card-border-color);
+    border-right: 3px solid var(--card-border-color);
+}
+</style>

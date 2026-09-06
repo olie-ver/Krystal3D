@@ -17,9 +17,10 @@ img:
     src: "../../images/52Cards.png"
     alt: "52Cards app icon"
 
-tags: ["C#", "Godot", "video games"]
-
 svg: false
+
+description: ""
+keywords: ""
 ---
 
 52Cards is an upcoming desktop game that comes with 52 card games bundled together.

@@ -4,6 +4,7 @@ export const prerender = true;
 import { getCollection, render } from "astro:content";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Head from "../../components/Head.astro";
 import PaymentForm from "../../components/PaymentForm.astro";
 
 import "../../styles/project.css"
@@ -26,9 +27,15 @@ export async function getStaticPaths() {
 const { project } = Astro.params;
 const { p } = Astro.props;
 const { Content } = await render(p);
+console.log(p);
 ---
 
 <BaseLayout renderHome={true}>
+    <Head slot="head"
+        title={`Krystal - ${project}`}
+        description={p.data.description}
+        keywords={p.data.keywords}
+    />
     <main>
         <h1>{project}</h1>
 
@@ -52,6 +59,7 @@ const { Content } = await render(p);
         </span>
     </main>
 </BaseLayout>
+
 <style>
     #show-form, span {
         display: none;

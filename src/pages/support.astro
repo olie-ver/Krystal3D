@@ -2,9 +2,18 @@
 export const prerender = true;
 
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Head from '../components/Head.astro';
 import PaymentForm from "../components/PaymentForm.astro";
 ---
 <BaseLayout renderHome={true}>
+    <Head slot="head"
+        title = "Krystal - Support Us"
+        description="Krystal's support page. Help support Krystal financially to help us 
+            fund the maintenance of current projects as well as the development of new projects."
+        keywords = "krystal, krystal3d, support krystal, support krystal3d, 
+            krystal support page, krystal3d support page"
+    />
+
     <main>
         <h1>Support Us</h1>
         <p>

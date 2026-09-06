@@ -18,8 +18,9 @@ const projects = defineCollection({
             src: image(),
             alt: z.string()
         }),
-        tags: z.array(z.string()),
-        svg: z.boolean()
+        svg: z.boolean(),
+        description: z.string(),
+        keywords: z.string(),
     })
 });
 
