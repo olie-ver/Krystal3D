@@ -17,6 +17,6 @@ li {
 }
 
 a {
-    color: #90D5FF;
+    color: var(--text-color);
     cursor: pointer;
 }

@@ -1,0 +1,206 @@
+---
+const prerender = true;
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Head from "../../components/Head.astro";
+import Logo from "../../images/Saturn.svg"
+
+import PaymentForm from "../../components/PaymentForm.astro";
+
+import "../../styles/project.css"
+---
+
+<BaseLayout renderHome={true}>
+    <Head slot="head"
+        title="Krystal - Saturn"
+        description="Saturn is an upcoming open-source SAT solver with educational material attached.
+            See our progress in making Saturn here."
+        keywords="saturn, SATurn, sat solver, krystal saturn, krystal SATurn"
+    />
+
+    <main>
+        <section>
+            <h1>Saturn</h1>
+            <img id="logo" src={Logo.src} alt="Saturn's logo"/>
+
+            <div id="status-bar">
+                <p>Status: Pre-release</p>
+                <p id="middle">Version: N/A</p>
+                <p>License: Unlicensed</p>
+            </div>
+            
+            <p>
+                Saturn is a complete SAT solver built in C++20. It is currently 
+                educational material meant to teach others how SAT solvers operate
+                and how they are implemented at a low level. While it is good enough 
+                to be used as a standalone solver, it is most likely not competition 
+                worthy, and we suggest other solvers to be used while we develop it
+                further.
+            </p>
+
+            <p>
+                As of now, Saturn isn't ready for release, and is unlicensed.
+                Since it is  unlicensed, creating derivatives, distributing, and reproducing 
+                any and all files is prohibited. However, since it's an educational project,
+                this doesn't mean we disallow downloading/viewing/using any of the files. 
+                You are 100% allowed to download, view, and use any and all of the files, but only 
+                for personal use. If you are to download anything from the GitHub, you can do 
+                anything you want <strong>but it must stay on your machine at all times.</strong>
+            </p>
+        </section>
+
+        <section>
+            <h1>Credits</h1>
+            <p><strong>Developer:</strong> Oliver Lie</p>
+            <p><strong>Educational Material Writer:</strong> Oliver Lie</p>
+            <p>GitHub: 
+                <a href="https://github.com/olie-ver/SATurn">
+                    https://github.com/olie-ver/SATurn
+                </a>
+            </p>
+        </section>
+
+        <section>
+            <h1>Support the Development</h1>
+            <p>Here are some ways you can support the development of Saturn:</p>
+
+            <h2>1. Ask Questions</h2>
+            <p>
+                Read through the educational materials and ask questions. Questions 
+                like "why is X implemented this way," or "what happens if we change 
+                X," would greatly help as we aim to answer them in our educational 
+                materials. Reviewing the educational materials and suggesting 
+                changes/revisions would be greatly appreciated.
+            </p>
+
+            <h2>2. Propose new Features</h2>
+            <p>
+                The world of SAT solving is very big and what is covered (DPLL and CDCL)
+                is just scratching the surface. If you have an algorithm or heuristic
+                you'd like to see implemented, let us know and we will do our best to 
+                research, implement, and report our findings. 
+            </p>
+
+            <h2>3. Financial Support</h2>
+            <p>
+                Making a SAT solver isn't easy and it takes a lot of work, neither is 
+                writing education materials on building your own. By donating to the
+                development of Saturn, we can invest more time in its implementation 
+                as well as its accompanying research report to make this knowledge more 
+                accessible.
+            </p>
+        </section>
+
+        <section>
+            <h1>Downloadable Files</h1>
+
+            <ul>
+                <li>
+                    <a href="https://github.com/olie-ver/SATurn/raw/refs/heads/main/paper/paper.pdf"
+                        download="From Scratch (First Draft)">
+                        From Scratch (First Draft)
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <input id="show-form" type="checkbox"/>
+            <label for="show-form">Click to Support</label>
+            <span>
+                <PaymentForm reason="Saturn"/>
+            </span>
+        </section>
+    </main>
+</BaseLayout>
+<style>
+section {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 4% 0 0 10%;
+    padding-bottom: 2.5%;
+    width: 80%;
+    height: fit-content;
+    background: transparent;
+    margin-bottom: 2svh;
+    line-height: 1.7;
+}
+
+#logo {
+   filter: var(--logo-filter);
+}
+
+#status-bar {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+    border-top: 3px solid var(--card-border-color);
+    border-bottom: 3px solid var(--card-border-color);
+}
+
+#middle {
+    border-left: 3px solid var(--card-border-color);
+    border-right: 3px solid var(--card-border-color);
+}
+
+p {
+    max-width: 80%;
+}
+
+code {
+    text-align: left;
+    width: 75%;
+    color: #9ECBFF;
+    background-color: #24292e;
+}
+
+span {
+    color: #B392F0;
+}
+
+label~span {
+    width: 100%;
+}
+
+#show-form, label~span {
+    display: none;
+}
+
+#show-from, #show-form~label {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 3svh;
+}
+
+#show-form~label {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+#show-form:checked~span {
+    display: block;
+}
+
+ul {
+    width: 75%;
+}
+
+li {
+    text-align: left;
+}
+
+@media (orientation: landscape) {
+    main {
+        margin-left: calc(env(safe-area-inset-left));
+    }
+}
+</style>

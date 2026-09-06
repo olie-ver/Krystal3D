@@ -65,11 +65,10 @@ html.midnight {
     background: var(--background-color);
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, strong, a, li, li::marker {
     color: var(--text-color);
 }
 
 a {
-    color: var(--text-color);
     cursor: pointer;
 }

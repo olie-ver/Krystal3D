@@ -1,4 +1,4 @@
----
+<!-- ---
 export const prerender = true;
 
 import { getCollection, render } from "astro:content";
@@ -27,12 +27,11 @@ export async function getStaticPaths() {
 const { project } = Astro.params;
 const { p } = Astro.props;
 const { Content } = await render(p);
-console.log(p);
 ---
 
 <BaseLayout renderHome={true}>
     <Head slot="head"
-        title={`Krystal - ${project}`}
+        title={''}
         description={p.data.description}
         keywords={p.data.keywords}
     />
@@ -241,4 +240,4 @@ console.log(p);
             max-width: 80%;
         }
     }
-</style>
+</style> -->
