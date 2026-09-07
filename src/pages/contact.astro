@@ -51,7 +51,7 @@ import Head from '../components/Head.astro';
     form?.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const response = await fetch("/api/contact", {
+        const response = await fetch("/api/contact/", {
             method: "POST",
             body: new FormData(form)
         });
