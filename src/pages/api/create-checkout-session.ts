@@ -40,7 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
                 message: "",
             },
 
-            return_url: "https://www.krystal3d.com/support",
+            return_url: "https://www.krystal3d.com/support/",
         });
 
         return new Response(

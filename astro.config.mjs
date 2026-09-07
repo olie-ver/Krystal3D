@@ -27,9 +27,9 @@ export default defineConfig({
     }
   },
 
-  site: "https://www.krystal3d.com",
+  site: "https://www.krystal3d.com/",
   base: "/",
-  trailingSlash: "never",
+  trailingSlash: "always",
   output: "server",
   adapter: vercel(),
   integrations: [sitemap()],
