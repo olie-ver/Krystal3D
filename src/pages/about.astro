@@ -41,6 +41,7 @@ const allMembers = await getCollection("members");
     #content {
         width: 100%;
         height: fit-content;
+        text-align: center;
         margin: 0;
         overflow: auto;
         border-radius: 0%;
@@ -54,13 +55,6 @@ const allMembers = await getCollection("members");
 
         h1 {
             font-size: 2rem;
-        }
-
-        #content {
-            display: flex;
-			gap: 10svh 5%;
-
-            width: calc(80% - env(safe-area-inset-left));
         }
     }
 </style>
