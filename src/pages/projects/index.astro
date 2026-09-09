@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import Head from "../../components/Head.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 import { getCollection } from "astro:content";
@@ -10,6 +11,12 @@ const allProjects = await getCollection("projects");
 ---
 
 <BaseLayout renderHome={true}>
+	<Head slot="head"
+        title="Krystal - Projects"
+        description="View the projects we have built and maintain. Check back here for updates 
+			on any projects including updates, revisions, or new releases."
+        keywords="krystal, krystal3d, krystal projects, krystal3d projects"
+    />
 	<main>
 		{
 			allProjects.map((project: any) => (
