@@ -1,7 +1,7 @@
 ---
 title: "Test++"
 status: "Release"
-version: "20.1.3"
+version: "20.1.4"
 
 contributors: ["Oliver Lie"]
 
@@ -9,15 +9,15 @@ openSource: "Yes"
 license: MIT
 
 startDate: 2026-03-30
-lastUpdated: 2026-08-30
+lastUpdated: 2026-09-11
 
 repo: "https://github.com/olie-ver/TestPlusPlus"
 
 img: 
-    src: "../../images/Krystal.svg"
+    src: "../../images/Test++.svg"
     alt: "Test++ logo"
 
-svg: true
+svg: false
 
 description: "Test++ is a C++ unit testing framework and CLI tool meant to help C++ 
             developers streamline testing their C++ code. Learn more about the latest version

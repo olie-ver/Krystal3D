@@ -3,7 +3,7 @@ export const prerender = true;
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Head from "../../components/Head.astro";
-import Logo from "../../images/Krystal.svg"
+import Logo from "../../images/Test++.svg"
 
 import PaymentForm from "../../components/PaymentForm.astro";
 
@@ -24,37 +24,32 @@ import "../../styles/project.css"
     <main>
         <section>
             <h1>Test++</h1>
-            <img id="logo" src={Logo.src} alt="Placeholder for Test++'s logo"/>
+            <img id="logo" src={Logo.src} alt="Test++'s logo. Art credit Mutian Gao and Oliver Lie"/>
 
             <div id="status-bar">
                 <p>Status: Release</p>
-                <p id="middle">Version: 20.1.3</p>
+                <p id="middle">Version: 20.1.4</p>
                 <p>License: <a href="https://opensource.org/license/mit">MIT</a></p>
             </div>
             
             <p>
-                Test++ is a header-only C++ unit testing library and framework. It is 
-                available for download and installation on MacOS, Windows, and Linux. That
-                being said, its development was largely done on MacOS, and as such, its 
-                usage on Windows and Linux systems is largely untested. It is currently 
-                built using C++20. Using Test++ with other C++ standards is largely untested.
+                Test++ is a C++ unit testing library, framework, and CLI tool. It is available 
+                for download and installation on MacOS (most supported), Windows (medium support), 
+                and Linux (least supported). Because its development was largely done on MacOS, its 
+                usage on Windows and Linux systems is largely untested. It is currently being tested 
+                for compilation and running on Windows. It is built using C++20. Using Test++ with 
+                other C++ standard-specific code is largely untested.
+                Because it's a CLI tool, it is not header-only, however, its CLI usage makes writing 
+                tests just as easy as a header-only library. The CLI tool handles compilation and 
+                running for you.
             </p>
             <h2>Changes</h2>
             <p>Here are the changes that have been made in the latest version of Test++</p>
             <ul>
                 <li>
-                    Added in a <code>--help</code> command.
-                </li>
-                <li>
-                    Test++ now compiles under <code>-O3</code> optimization.
-                </li>
-                <li>
-                    You can now specify compiler flags and C++ standard.
-                </li>
-                <li>
-                    Running <code>testpp [flags]</code> will no longer recompile
-                        your generated executable, but will instead rerun the last 
-                        generated exectuable with those flags.
+                    Test++ can now be compiled, installed, and ran on Windows. Updating to the 
+                    latest version for Mac users is unnecessary because this release does not 
+                    affect the Mac build.
                 </li>
             </ul>
             
@@ -124,11 +119,11 @@ import "../../styles/project.css"
 
             <code><span>brew </span>uninstall testpp</code>
 
-            <h2>Manual Installation</h2>
+            <h2>Manual Installation (Mac)</h2>
             <p>
                 Manually installing Test++ onto your system requires slightly more 
                 setup. Download the latest version of Test++
-                <a href="https://github.com/olie-ver/TestPlusPlus/raw/refs/heads/main/Downloads/V20.1.3.zip"> 
+                <a href="https://github.com/olie-ver/TestPlusPlus/raw/refs/heads/main/Downloads/V20.1.4.zip"> 
                     here.
                 </a>
                 Extract the contents of the .zip file. Next, open a terminal in the root folder 
@@ -143,6 +138,29 @@ import "../../styles/project.css"
 
             <code><span>echo</span> 'export PATH="$HOME/testpp-install/bin:$PATH"' {">>"} ~/.zshrc</code>
 
+            <h2>Manual Installation (Windows)</h2>
+            <p>
+                Manually installing Test++ onto your system requires slightly more 
+                setup. Download the latest version of Test++
+                <a href="https://github.com/olie-ver/TestPlusPlus/raw/refs/heads/main/Downloads/V20.1.4.zip"> 
+                    here.
+                </a>
+                Extract the contents of the .zip file. Next, open a terminal in the root folder 
+                of the extracted files, then run the following commands:
+            </p>
+
+            <code><span>cmake </span>-S . -B build -DCMAKE_BUILD_TYPE=Release</code>
+            <code><span>cmake </span>--build build --parallel --config Release</code>
+            <code><span>sudo </span>cmake --install build --config Release</code>
+
+            <p>Then to register the <code>testpp</code> command in your system:</p>
+
+            <p>
+                For Windows, you can register the `testpp` command by going to your 
+                Environment Variables, finding the PATH variable and then adding in a 
+                new environment variable to `C:\Program Files (x86)\testpp\bin`.
+            </p>
+
             <p>
                 Uninstallation will require you to find the testpp folder in your installation 
                 root and manually deleting it.
@@ -155,8 +173,14 @@ import "../../styles/project.css"
 
             <ul>
                 <li>
+                    <a href="https://github.com/olie-ver/TestPlusPlus/raw/refs/heads/main/Downloads/V20.1.4.zip">
+                        V20.1.4 (Current)
+                    </a>
+                </li>
+
+                <li>
                     <a href="https://github.com/olie-ver/TestPlusPlus/raw/refs/heads/main/Downloads/V20.1.3.zip">
-                        V20.1.3 (Current)
+                        V20.1.3
                     </a>
                 </li>
 
@@ -196,7 +220,8 @@ section {
 }
 
 #logo {
-   filter: var(--logo-filter);
+   filter: var(--image-brightness);
+   max-width: 40%;
 }
 
 #status-bar {
