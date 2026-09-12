@@ -5,7 +5,7 @@ const { project } = Astro.props;
 ---
 
 <div class="Card">
-    <img id={project.svg ? "svg" : "img"} src={project.img.src.src} alt={project.img.alt}/>
+    <img id={project.svg ? "svg" : "img"} src={project.img.src.src} alt={project.img.alt} title={project.img.alt}/>
 
     <div class="Info">
         <a href={`/projects/${project.title}/`}><h1>{project.title}</h1></a>
