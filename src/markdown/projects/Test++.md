@@ -15,7 +15,7 @@ repo: "https://github.com/olie-ver/TestPlusPlus"
 
 img: 
     src: "../../images/Test++.svg"
-    alt: "Test++ logo"
+    alt: "Test++'s logo. Art credit Mutian Gao and Oliver Lie"
 
 svg: false
 
