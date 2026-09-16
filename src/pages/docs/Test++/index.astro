@@ -1,0 +1,50 @@
+---
+export const prerender = true;
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Head from "../../../components/Head.astro";
+import DocCard from "../../../components/DocCard.astro";
+
+import { getCollection } from "astro:content";
+
+const allDocs = await getCollection("testppDocs");
+---
+
+<BaseLayout renderHome={true}>
+    <Head slot="head"
+        title="Test++ Documentation"
+        description="Test++ documentation page. Find documentation of Test++ including downloading/installation 
+            as well as how to use Test++ in your projects."
+        keywords="krystal, krystal3d, krystal docs, krystal3d docs, test++ docs, testpp docs, 
+            test++ documentation, testpp documentation"
+    />
+    <main>
+        {
+            allDocs.map(doc => 
+                (<DocCard doc={doc.data} path={doc.id}/>)
+            )
+        }
+    </main>
+</BaseLayout>
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+@media (orientation: landscape) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10svh 5%;
+
+        margin-left: calc(10% + env(safe-area-inset-left));
+        margin-bottom: 5svh;
+
+        width: calc(80% - env(safe-area-inset-left));
+    }
+}
+</style>

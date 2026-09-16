@@ -13,5 +13,31 @@ import Head from '../components/Head.astro';
 	/>
 	<main>
 		<!-- Will put news about projects and games here -->
+		<h1>Announcements</h1>
+		<p>(Last updated September 15th, 2026)</p>
+		<ul>
+			<li>Test++ is now available for installation on Windows (x86, x64, ARM64)</li>
+			<li>Test++ now has dedicated installers for Mac and all Windows platforms</li>
+			<li>
+				A new <a href="/docs/">docs</a> page has been released containing documentation, blogs, 
+				and tutorials on our projects. Be sure to check it out!
+			</li>
+			<li>Our latest project, Pickup, has started development. Its page will be up soon</li>
+		</ul>
 	</main>
+	<br/>
 </BaseLayout>
+
+<style>
+main {
+	width: 80%;
+	margin-left: 10%;
+}
+h1, p {
+	text-align: center;
+}
+
+li {
+	margin-left: 10%;
+}
+</style>

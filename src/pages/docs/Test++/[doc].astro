@@ -1,0 +1,144 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Head from "../../../components/Head.astro";
+
+export const getStaticPaths = (async () => {
+    const entries = await getCollection("testppDocs");
+
+    return entries.map((entry) => ({
+        params: {
+            doc: entry.id
+        },
+        props: {
+            entry
+        }
+    }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+---
+
+<BaseLayout renderHome={true}>
+    <Head slot="head"
+        title={`${entry.data.parent} - ${entry.id}`}
+        description={entry.data.desc}
+    />
+    <input id="show-nav" type="checkbox"/>
+    <label for="show-nav">&equiv;</label>
+     
+    <aside>
+        {headings.map(heading => (
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+        ))}
+    </aside>
+    <article>
+        <Content/>
+    </article>
+</BaseLayout>
+
+<style>
+
+label {
+    position: fixed;
+    top: 0svh;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    margin-left: 1%;
+    padding: 2% 4% 2% 4%;
+    background-color: var(--main-color);
+}
+
+#show-nav, label~aside {
+    display: none;
+}
+
+#show-nav, #show-nav~label {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 3svh;
+}
+
+#show-nav~label {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+#show-nav:checked~aside {
+    display: flex;
+}
+
+#show-nav:checked~label {
+    margin-left: 81%;
+}
+
+aside {
+    position: fixed;
+    top: 0svh;
+    display: flex;
+    max-height: 100svh;
+    height: 100svh;
+    max-width: 80%;
+    width: 80%;
+    flex-direction: column;
+    background: var(--main-color);
+    overflow-y: scroll;
+    border-top-right-radius: 15px;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+}
+
+aside a {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    border-bottom: 2px solid var(--border-color);
+}
+
+
+article {
+    margin-left: 10%;
+    width: 80%;
+}
+
+article :global(h1, h2, h3, h4, h5, h6, p) {
+    text-align: center;
+    text-wrap: balance;
+}
+
+article :global(ol, ul, li) {
+    text-wrap: balance;
+}
+
+article :global(pre) {
+    border-radius: 10px;
+    padding: 1% 2% 1% 2%;
+}
+
+@media (orientation: landscape) {
+    label {
+        padding: 1% 1.5% 1% 1.5%;
+    }
+
+    aside {
+        max-width: 40%;
+    }
+
+    #show-nav:checked~label {
+        margin-left: 41%;
+    }
+
+    article :global(pre) {
+        margin-left: 24%;
+        width: 48%;
+    }
+}
+
+</style>
