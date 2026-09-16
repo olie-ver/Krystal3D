@@ -37,4 +37,16 @@ const members = defineCollection({
     })
 });
 
-export const collections = { projects, members };
+const testppDocs = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/markdown/docs/Test++ "}),
+    schema: ({}) => z.object({
+        title: z.string(),
+        parent: z.string(),
+        desc: z.string(),
+        keywords: z.string(),
+        version: z.string(),
+        lastUpdated: z.date(),
+    })
+});
+
+export const collections = { projects, members, testppDocs };

@@ -1,26 +1,13 @@
 ---
-export const prerender = true;
+const { doc, path } = Astro.props;
 
-const { project, doc = false } = Astro.props;
 ---
 
 <div class="Card">
-    <img id={project.svg ? "svg" : "img"} src={project.img.src.src} alt={project.img.alt} title={project.img.alt}/>
-
-    <div class="Info">
-        <a href={doc ? `/docs/${project.title}/` : `/projects/${project.title}/`}><h1>{project.title}</h1></a>
-        <p>Status: {project.status}</p>
-        <p>Version: {project.version}</p>
-        <p>Open Source: {project.openSource}</p>
-        <p>License: {project.license}</p>
-        <p>Contributors: 
-            {
-                " " + project.contributors.join(", ")
-            }
-        </p>
-        <p>Start Date: {project.startDate.toString().substring(0, 10)}</p>
-        <p>Last Updated: {project.lastUpdated.toString().substring(0, 10)}</p>
-    </div>
+    <a href={`/docs/${doc.parent}/${path}/`}><h1>{doc.title}</h1></a>
+    <p>{doc.desc}</p>
+    <p>Version: {doc.version}</p>
+    <p>Last Updated: {doc.lastUpdated.toString().substring(0, 10)}</p>
 </div>
 
 <style>
@@ -64,6 +51,8 @@ img {
 
 p {
     margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
 }
 
 h1 {
