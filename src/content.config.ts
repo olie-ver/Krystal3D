@@ -46,6 +46,7 @@ const testppDocs = defineCollection({
         keywords: z.string(),
         version: z.string(),
         lastUpdated: z.date(),
+        dateAdded: z.date()
     })
 });
 

@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import { Font } from "astro:assets"
+import Analytics from '@vercel/analytics/astro'
 
 const { title, description, keywords } = Astro.props;
 ---
@@ -18,6 +19,8 @@ const { title, description, keywords } = Astro.props;
     <meta name="author" content="Oliver Lie" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
+
+    <Analytics/>
 
     <Font cssVariable="--font-tilt-prism"/>
     <title>{title}</title>
