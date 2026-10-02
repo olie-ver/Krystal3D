@@ -31,6 +31,10 @@ export default defineConfig({
   base: "/",
   trailingSlash: "always",
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  }),
   integrations: [sitemap()],
 });
