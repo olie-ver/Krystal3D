@@ -1,7 +1,7 @@
 ---
 title: "Test++"
 status: "Release"
-version: "20.1.4"
+version: "20.2.0"
 
 contributors: ["Oliver Lie"]
 
@@ -9,7 +9,7 @@ openSource: "Yes"
 license: MIT
 
 startDate: 2026-03-30
-lastUpdated: 2026-09-11
+lastUpdated: 2026-10-02
 
 repo: "https://github.com/olie-ver/TestPlusPlus"
 

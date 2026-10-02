@@ -10,6 +10,7 @@ keywords: "testpp vscode, test++ vscode, add test++ to vscode, add testpp to vsc
 version: "20.1.4"
 
 lastUpdated: 2026-09-15
+dateAdded: 2026-09-15
 ---
 
 # Add Test++ to VSCode
