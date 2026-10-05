@@ -7,7 +7,14 @@ import DocCard from "../../../components/DocCard.astro";
 
 import { getCollection } from "astro:content";
 
-const allDocs = (await getCollection("testppDocs")).sort((a, b) => { return b.data.dateAdded.getTime() - a.data.dateAdded.getTime(); });
+const allDocs = (await getCollection("testppDocs")).sort((a, b) =>
+    { 
+        if (a.data.dateAdded.getTime() === b.data.dateAdded.getTime()) {
+            return b.data.lastUpdated.getTime() - a.data.lastUpdated.getTime();
+        }
+        return b.data.dateAdded.getTime() - a.data.dateAdded.getTime(); 
+    }
+);
 ---
 
 <BaseLayout renderHome={true}>

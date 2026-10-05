@@ -1,6 +1,8 @@
 ---
 title: "Adding the Test++ Library to VSCode"
 
+webtitle: "Add to VSCode"
+
 parent: "Test++"
 
 desc: "Learn how to add the Test++ library to VSCode Intellisense for ease of use in your own projects."
@@ -9,7 +11,7 @@ keywords: "testpp vscode, test++ vscode, add test++ to vscode, add testpp to vsc
 
 version: "20.1.4"
 
-lastUpdated: 2026-09-15
+lastUpdated: 2026-10-05
 dateAdded: 2026-09-15
 ---
 
@@ -52,3 +54,20 @@ includePath: [
 ]
 ```
 And in that project, you will be able to use `#include <testpp/testpp.hpp>`.
+
+## Automatically Include the Latest Version
+
+When Test++ gets an update, the version changes, which means that the path to the `include` folder changes as well. When this happens, 
+you'll need to redo this entire process every time so that VSCode can find the Test++ library. Rather than manually changing this every time,
+when you add the include path into VSCode, you can put in the '*' character in place of the Test++ version number. This way, VSCode will 
+always check the latest Test++ version for the `include` folder.
+
+For example:
+```bash
+/opt/homebrew/Cellar/testpp/20.2.0/include
+```
+
+Becomes:
+```bash
+/opt/homebrew/Cellar/testpp/*/include
+```

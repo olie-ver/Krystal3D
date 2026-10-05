@@ -41,6 +41,7 @@ const testppDocs = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/markdown/docs/Test++ "}),
     schema: ({}) => z.object({
         title: z.string(),
+        webtitle: z.string(),
         parent: z.string(),
         desc: z.string(),
         keywords: z.string(),

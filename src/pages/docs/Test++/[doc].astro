@@ -26,7 +26,7 @@ const { Content, headings } = await render(entry);
 
 <BaseLayout renderHome={true}>
     <Head slot="head"
-        title={`${entry.data.parent} - ${entry.id}`}
+        title={`${entry.data.parent} - ${entry.data.webtitle}`}
         description={entry.data.desc}
     />
     <input id="show-nav" type="checkbox"/>

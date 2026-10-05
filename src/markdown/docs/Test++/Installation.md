@@ -1,6 +1,8 @@
 ---
 title: "Download and Installation"
 
+webtitle: "Installation"
+
 parent: "Test++"
 
 desc: "Learn how to download and install Test++ onto your system. Test++ is able to be installed on 
